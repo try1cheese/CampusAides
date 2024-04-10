@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.campus.mapper.UserRiderMapper">
+
+    <select id="selectAll" resultType="com.vo.OrderVo">
+        select address_start,address_end,rider_id,user_id,money,status,type,notes
+            from takeaway_order
+        where status = 0
+    </select>
+
+
+    <select id="showRiderOrder" resultType="com.vo.OrderVo">
+        select address_end,address_start,rider_id,user_id,money,status,type,notes from takeaway_order
+        where rider_id = #{userId}
+        order by create_time desc
+    </select>
+
+
+
+</mapper>
